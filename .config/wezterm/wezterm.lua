@@ -28,16 +28,15 @@ config.window_close_confirmation = "NeverPrompt"
 config.hide_tab_bar_if_only_one_tab = true
 config.use_fancy_tab_bar = true
 
--- Appearance
---config.background = {
---	source = {
---		File = '/home/foxiecat/Pictures/Maids/SlimeMaid3.png',
---	},
---	height = 'Cover',
---	width = 'Cover',
---	repeat_x = 'NoRepeat',
---	repeat_y = 'NoRepeat',
---}
-
+config.keys = {
+	{
+		key = '+',
+		mods = 'SHIFT|ALT',
+		action = wezterm.action.SplitHorizontal {
+			args = { 'top' },
+			domain = 'CurrentPaneDomain',
+		},
+	},
+}
 -- and finally, return the configuration to wezterm
 return config
