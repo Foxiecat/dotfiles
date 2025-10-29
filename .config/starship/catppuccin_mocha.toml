@@ -64,9 +64,10 @@ style = "peach"
 format = '\[$all_status$ahead_behind\]'
 
 [git_commit]
-commit_hash_length = 8
-style = "bold teal"
-tag_symbol = ' '
+format = '[\($hash$tag\)]($style) '
+commit_hash_length = 7
+style = "bold green"
+tag_symbol = '  '
 disabled = false
 
 
