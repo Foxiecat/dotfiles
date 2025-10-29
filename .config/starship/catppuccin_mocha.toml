@@ -5,35 +5,83 @@ continuation_prompt = "[❯❯](peach)"
 palette = "catppuccin_mocha"
 
 # Basics:
+[username]
+style_user = "green bold"
+style_root = "red bold"
+format = "[$user]($style) "
+disabled = false
+show_always = true
+
+[hostname]
+ssh_only = false
+format = 'on [$ssh_symbol$hostname]($style) in '
+style = "bold yellow"
+trim_at = "."
+disabled = false
+
 [character]
-success_symbol = "[[󰄛](green) ❯](peach)"
-error_symbol = "[[󰄛](red) ❯](peach)"
-vimcmd_symbol = "[󰄛 ❮](subtext1)" # For use with zsh-vi-mode
-
-[cmd_duration]
-
-[git_branch]
-symbol = " "
-style = "bold mauve"
-
-[git_status]
-style = "peach"
+success_symbol = "[[󰄛](bold green) ❯](peach)"
+error_symbol = "[[󰄛](bold red) ❯](peach)"
 
 [directory]
 before_repo_root_style = "lavender"
 repo_root_style = "bold red"
-style = "lavender"
+style = "bold sky"
+home_symbol = '~'
 format = "[$path]($style)[$read_only]($read_only_style) "
 repo_root_format = '[$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) '
 read_only = " 󰌾"
+truncation_symbol = ''
 truncation_length = 4
 truncate_to_repo = true
 use_logical_path = false
 
-[docker_context]
-symbol = " "
-style = "green"
+[cmd_duration]
+min_time = 10_000
+format = '\[[⏱ $duration]($style)\]'
+style = 'yellow'
 
+################################################################################
+## GIT
+################################################################################
+[git_branch]
+format = 'on [$symbol$branch]($style)'
+symbol = " "
+style = "bold green"
+
+[git_status]
+conflicted = "󰞇 "
+ahead = "⇡${count} "
+behind = "⇣${count} "
+diverged = "⇕ ⇡${ahead_count} ⇣${behind_count} "
+untracked = "${count} "
+stashed = " "
+modified = " ${count} "
+staged = "${count} "
+renamed = "»${count} "
+deleted = "✘${count} "
+style = "peach"
+format = '\[$all_status$ahead_behind\]'
+
+[git_commit]
+commit_hash_length = 8
+style = "bold teal"
+tag_symbol = ' '
+disabled = false
+
+
+################################################################################
+## EXTRAS
+################################################################################
+[docker_context]
+disabled = false
+symbol = " "
+style = "blue bold"
+format = "via [$symbol$context]($style) "
+only_with_files = true
+
+[aws]
+disabled = true
 
 # Palattes:
 [palettes.catppuccin_mocha]

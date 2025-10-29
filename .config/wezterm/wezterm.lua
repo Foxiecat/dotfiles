@@ -8,34 +8,44 @@ local act = wezterm.action
 local config = wezterm.config_builder()
 
 config.automatically_reload_config = false
-config.enable_wayland = true
+--config.enable_wayland = true
 
 -- Colors
 config.color_scheme = "catppuccin-mocha"
 
 -- Font
-config.font = wezterm.font("JetBrainsMono NF")
+config.font = wezterm.font("JetBrainsMono Nerd Font")
 
 -- Window
-config.initial_cols = 160
-config.initial_rows = 40
-
 config.window_background_opacity = 0.5
-config.kde_window_background_blur = true
+config.macos_window_background_blur = 50
 
---config.window_decorations = "RESIZE"
+config.window_decorations = "RESIZE"
 config.window_close_confirmation = "NeverPrompt"
 config.hide_tab_bar_if_only_one_tab = true
 config.use_fancy_tab_bar = true
 
+config.send_composed_key_when_left_alt_is_pressed = true
+config.send_composed_key_when_right_alt_is_pressed = false
 config.keys = {
 	{
-		key = '+',
-		mods = 'SHIFT|ALT',
-		action = wezterm.action.SplitHorizontal {
-			args = { 'top' },
-			domain = 'CurrentPaneDomain',
+		key = '.',
+		mods = 'ALT',
+		action = act.SplitPane {
+			direction = 'Right'
 		},
+	},
+	{
+		key = ',',
+		mods = 'ALT',
+		action = act.SplitPane {
+			direction = 'Down'
+		},
+	},
+	{
+		key = 'x',
+		mods = 'ALT',
+		action = act.CloseCurrentPane { confirm = false },
 	},
 }
 -- and finally, return the configuration to wezterm

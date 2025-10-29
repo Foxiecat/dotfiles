@@ -1,0 +1,128 @@
+console_title_template = '{{ .Folder }}'
+version = 3
+
+[transient_prompt]
+  template = ' '
+  foreground = '#FEF5ED'
+  background = 'transparent'
+
+[upgrade]
+  source = 'cdn'
+  interval = '168h'
+  auto = false
+  notice = false
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+  newline = true
+
+  [[blocks.segments]]
+    leading_diamond = ''
+    trailing_diamond = '<transparent,#FEF5ED></>'
+    template = ' {{ if .WSL }}WSL at {{ end }}{{.Icon}}'
+    foreground = '#011627'
+    background = '#FEF5ED'
+    type = 'os'
+    style = 'diamond'
+
+    [blocks.segments.properties]
+      macos = ' '
+      ubuntu = ' '
+      windows = ' '
+
+  [[blocks.segments]]
+    leading_diamond = ''
+    trailing_diamond = '<transparent,#FEF5ED></>'
+    template = ' {{ .Name }}'
+    foreground = '#011627'
+    background = '#FEF5ED'
+    type = 'shell'
+    style = 'diamond'
+
+  [[blocks.segments]]
+    leading_diamond = ''
+    trailing_diamond = '<transparent,#516BEB></>'
+    template = ' MEM: {{ round .PhysicalPercentUsed .Precision }}% | {{ (div ((sub .PhysicalTotalMemory .PhysicalAvailableMemory)|float64) 1073741824.0) }}/{{ (div .PhysicalTotalMemory 1073741824.0) }}GB  '
+    foreground = '#ffffff'
+    background = '#516BEB'
+    type = 'sysinfo'
+    style = 'diamond'
+
+  [[blocks.segments]]
+    leading_diamond = ''
+    trailing_diamond = ''
+    template = ' {{ .FormattedMs }} '
+    foreground = '#d6deeb'
+    background = '#575656'
+    type = 'executiontime'
+    style = 'diamond'
+
+    [blocks.segments.properties]
+      style = 'roundrock'
+      threshold = 0.0
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'right'
+
+  [[blocks.segments]]
+    leading_diamond = ''
+    trailing_diamond = ''
+    template = ' {{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }} '
+    foreground = '#011627'
+    background = '#17D7A0'
+    type = 'git'
+    style = 'diamond'
+
+    [blocks.segments.properties]
+      branch_icon = ' '
+      fetch_status = true
+      fetch_upstream_icon = true
+      fetch_worktree_count = true
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+  newline = true
+
+  [[blocks.segments]]
+    template = '╭─'
+    type = 'text'
+    style = 'plain'
+
+  [[blocks.segments]]
+    template = ' ♥ {{ .CurrentDate | date .Format }} |'
+    type = 'time'
+    style = 'plain'
+
+    [blocks.segments.properties]
+      time_format = '15:04'
+
+  [[blocks.segments]]
+    template = '  '
+    type = 'root'
+    style = 'plain'
+
+  [[blocks.segments]]
+    template = ' {{ .Path }} '
+    type = 'path'
+    style = 'plain'
+
+    [blocks.segments.properties]
+      folder_icon = ' '
+      folder_separator_icon = '  '
+      home_icon = ' '
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+  newline = true
+
+  [[blocks.segments]]
+    template = '╰─ '
+    type = 'status'
+    style = 'plain'
+
+    [blocks.segments.properties]
+      always_enabled = true
