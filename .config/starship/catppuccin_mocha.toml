@@ -61,7 +61,7 @@ staged = "${count} "
 renamed = "»${count} "
 deleted = "✘${count} "
 style = "peach"
-format = '\[$all_status$ahead_behind\]'
+format = '\[$all_status$ahead_behind\] '
 
 [git_commit]
 format = '[\($hash$tag\)]($style) '
