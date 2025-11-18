@@ -11,7 +11,7 @@ local config = wezterm.config_builder()
 -- Shared Configuration:
 -- Window
 config.window_background_opacity = 0.8
-config.window_decorations = "RESIZE"
+config.window_decorations = "NONE"
 config.window_close_confirmation = "NeverPrompt"
 
 -- Colors
