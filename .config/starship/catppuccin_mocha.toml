@@ -67,7 +67,7 @@ format = '\[$all_status$ahead_behind\] '
 format = '[\($hash$tag\)]($style) '
 commit_hash_length = 7
 style = "bold green"
-tag_symbol = '  '
+tag_symbol = '  '
 disabled = false
 
 

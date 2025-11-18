@@ -15,6 +15,11 @@ console_title_template = "{{.Folder}}{{if .Root}} :: root{{end}} :: {{.shell}}"
   auto = false
   notice = false
 
+[transient_prompt]
+    template = ''
+    foreground = 'p:closer'
+    
+
 [[blocks]]
   type = 'prompt'
   alignment = 'left'
@@ -65,3 +70,4 @@ console_title_template = "{{.Folder}}{{if .Root}} :: root{{end}} :: {{.shell}}"
     foreground = 'p:closer'
     type = 'text'
     style = 'plain'
+    

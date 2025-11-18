@@ -1,0 +1,1 @@
+/home/foxiecat/.local/share/neovim/titus-kickstart/init.lua
